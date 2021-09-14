@@ -12,7 +12,10 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModal = document.querySelectorAll(".close");
-const emailForm = document.querySelectorAll(".email")
+const firstInput = document.getElementById("first")
+const lastInput = document.getElementById("last")
+const emailInput = document.getElementById("email")
+const birthInput = document.getElementById("birthdate")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -29,15 +32,23 @@ function hideModal() {
   modalbg.style.display = "none";
 }
 
-emailForm.addEventListener("change", valEmail());
-
-function valEmail(mail)
-{
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
-    return (true)
+firstInput.addEventListener("focusout", function (e) {
+  if (firstInput.value.length < 2) {
+    document.getElementById("nameHint").style.display = "inline"
+    firstInput.parentElement.setAttribute('data-error-visible', 'true');
+    return false;
   }
-  document.querySelector("emailHint").setAttribute("display = block")
-  return (false)
-}
+  firstInput.parentElement.setAttribute('data-error-visible', 'false');
+  document.getElementById("nameHint").style.display = "none"
+});
 
-emailForm.addEventListener('change', valEmail(e))
+emailInput.addEventListener('focusout', function (e) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!(emailInput.value.trim().match(re))) {
+    emailInput.parentElement.setAttribute('data-error-visible', 'true');
+    document.getElementById("emailHint").style.display = "block"
+    return (false);
+  }
+  emailInput.parentElement.setAttribute('data-error-visible', 'false');
+  document.getElementById("emailHint").style.display = "none"
+})
