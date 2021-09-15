@@ -76,7 +76,7 @@ birthInput.addEventListener("focusout", function (e) {
 });
 
 quantityInput.addEventListener("focusout", function (e) {
-  const re = /^([0-9][0-9])$/;
+  const re = /^([0-9](?:[0-9])?)$/;
   if (!(quantityInput.value.match(re))) {
     document.getElementById("quantityHint").style.display = "inline"
     quantityInput.parentElement.setAttribute('data-error-visible', 'true');
@@ -86,12 +86,12 @@ quantityInput.addEventListener("focusout", function (e) {
   document.getElementById("quantityHint").style.display = "none"
 });
 
-checkboxInput.addEventListener("change", function (e) {
-  if ((checkboxInput.checked = true)) {
-    document.getElementById("checkboxHint").style.display = "inline"
-    checkboxInput.nextSibling.setAttribute('data-error-visible', 'true');
+checkboxInput.addEventListener('change', function (e) {
+  if (!(checkboxInput.checked)) {
+    checkboxInput.parentElement.setAttribute('data-error-visible', 'true');
+    document.getElementById("checkboxHint").innerText = "Vous devez accepter les termes et conditions d'utilisation";
     return false;
-  }
-  checkboxInput.nextSibling.setAttribute('data-error-visible', 'false');
-  document.getElementById("checkboxHint").style.display = "none"
+  } 
+    document.getElementById("checkboxHint").innerText = "";
+    return true;
 });
