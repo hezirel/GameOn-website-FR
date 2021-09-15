@@ -16,6 +16,8 @@ const firstInput = document.getElementById("first")
 const lastInput = document.getElementById("last")
 const emailInput = document.getElementById("email")
 const birthInput = document.getElementById("birthdate")
+const quantityInput = document.getElementById("quantity")
+const checkboxInput = document.getElementById("checkbox1")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -71,4 +73,25 @@ birthInput.addEventListener("focusout", function (e) {
   }
   birthInput.parentElement.setAttribute('data-error-visible', 'false');
   document.getElementById("birthHint").style.display = "none"
+});
+
+quantityInput.addEventListener("focusout", function (e) {
+  const re = /^([0-9][0-9])$/;
+  if (!(quantityInput.value.match(re))) {
+    document.getElementById("quantityHint").style.display = "inline"
+    quantityInput.parentElement.setAttribute('data-error-visible', 'true');
+    return false;
+  }
+  quantityInput.parentElement.setAttribute('data-error-visible', 'false');
+  document.getElementById("quantityHint").style.display = "none"
+});
+
+checkboxInput.addEventListener("change", function (e) {
+  if ((checkboxInput.checked = true)) {
+    document.getElementById("checkboxHint").style.display = "inline"
+    checkboxInput.nextSibling.setAttribute('data-error-visible', 'true');
+    return false;
+  }
+  checkboxInput.nextSibling.setAttribute('data-error-visible', 'false');
+  document.getElementById("checkboxHint").style.display = "none"
 });
