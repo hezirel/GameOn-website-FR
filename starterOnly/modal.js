@@ -42,6 +42,16 @@ firstInput.addEventListener("focusout", function (e) {
   document.getElementById("nameHint").style.display = "none"
 });
 
+lastInput.addEventListener("focusout", function (e) {
+  if (lastInput.value.length < 2) {
+    document.getElementById("lastHint").style.display = "inline"
+    lastInput.parentElement.setAttribukkte('data-error-visible', 'true');
+    return false;
+  }
+  lastInput.parentElement.setAttribute('data-error-visible', 'false');
+  document.getElementById("lastHint").style.display = "none"
+});
+
 emailInput.addEventListener('focusout', function (e) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!(emailInput.value.trim().match(re))) {
@@ -52,3 +62,13 @@ emailInput.addEventListener('focusout', function (e) {
   emailInput.parentElement.setAttribute('data-error-visible', 'false');
   document.getElementById("emailHint").style.display = "none"
 })
+
+birthInput.addEventListener("focusout", function (e) {
+  if (!(birthInput.value)) {
+    document.getElementById("birthHint").style.display = "inline"
+    birthInput.parentElement.setAttribute('data-error-visible', 'true');
+    return false;
+  }
+  birthInput.parentElement.setAttribute('data-error-visible', 'false');
+  document.getElementById("birthHint").style.display = "none"
+});
