@@ -202,6 +202,7 @@ input {
 }
 
 .formHints {
+  display: none;
   color: #e54858;
   font-size: medium;
   font-weight: 200;
