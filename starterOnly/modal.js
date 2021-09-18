@@ -18,12 +18,13 @@ const lastInput = document.getElementById("last")
 const emailInput = document.getElementById("email")
 const birthInput = document.getElementById("birthdate")
 let minAge = 18
+let maxAge = 120
+var today = new Date();
 const quantityInput = document.getElementById("quantity")
 //const radioInput = document.getElementsByName('location')
 //const radioField = document.getElementById("locationsRadio")
 const checkboxInput = document.getElementById("checkbox1")
 //const optCheckboxInput = document.getElementById("checkbox2")
-
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", toggleModal));
@@ -37,9 +38,31 @@ function toggleModal() {
   modalbg.style.display = modalbg.style.display === 'block' ? '' : 'block';
 }
 
+function birthRange() {
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear() - minAge;
+  var yyy = yyyy - maxAge;
+  var toMax;
 
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("birthdate").setAttribute("max", today);
+  toMax = yyy + '-' + mm + '-' + dd;
+  document.getElementById("birthdate").setAttribute("min", (toMax));
+}
+
+birthRange();
 //submit conditions check before submit
 function validate() {
+  document.querySelector()
   return true;
 }
 
@@ -87,14 +110,8 @@ emailInput.addEventListener('focusout', function (e) {
   return true;
 })
 
-function birthValid(e) {
-  //Check if +13 from $today && not born in the future
-  //  if(e.match)
-  return true;
-}
-
-birthInput.addEventListener("focusout", function (e) {
-  if (!(birthValid(e.target.value))) {
+birthInput.addEventListener('focusout', function (e) {
+  if ((!(e.target.value)) || (e.target.value) > today) {
     document.getElementById("birthHint").style.display = "inline"
     e.target.parentElement.setAttribute('data-error-visible', 'true');
     return false;
