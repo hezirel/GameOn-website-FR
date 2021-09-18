@@ -105,7 +105,7 @@ birthInput.addEventListener("focusout", function (e) {
 });
 
 quantityInput.addEventListener("focusout", function (e) {
-  const re = /^([0-9](?:[0-9])?)$/;
+  const re = /\b([0-9]|[1-9][0-9])\b/;
   if (!(e.target.value.match(re))) {
     document.getElementById("quantityHint").style.display = "inline"
     e.target.parentElement.setAttribute('data-error-visible', 'true');
