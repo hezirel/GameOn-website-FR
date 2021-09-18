@@ -43,8 +43,8 @@ function toggleModal() {
   modalbg.style.display = "";
 }*/
 
-
-function birthRange() {
+//Explain self executing function syntax
+(function birthRange() {
   var dd = today.getDate();
   var mm = today.getMonth() + 1; //January is 0!
   var yyyy = today.getFullYear() - minAge;
@@ -63,9 +63,8 @@ function birthRange() {
   document.getElementById("birthdate").setAttribute("max", today);
   toMax = yyy + '-' + mm + '-' + dd;
   document.getElementById("birthdate").setAttribute("min", (toMax));
-}
+}());
 
-birthRange();
 
 firstInput.addEventListener("focusout", function (e) {
   var re = /^[A-Za-z]{2,20}$/
@@ -156,4 +155,3 @@ function validate() {
   document.querySelector(".modal-body").innerHTML = 'Form submission successful.<br><br><input class="btn-submit" type="submit" class="button close" value="Close"/>';
   return true;
 }
-
