@@ -26,17 +26,23 @@ const quantityInput = document.getElementById("quantity")
 const checkboxInput = document.getElementById("checkbox1")
 //const optCheckboxInput = document.getElementById("checkbox2")
 
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", toggleModal));
 // close event
 closeModal.forEach((btn) => btn.addEventListener("click", toggleModal));
-//submitModal.forEach((btn) => btn.addEventListener("click", toggleModal));
-
 // launch modal form
 function toggleModal() {
   // Explain conditon bolean
   modalbg.style.display = modalbg.style.display === 'block' ? '' : 'block';
 }
+//hide modal form on .close .btn press (!(launchModal))
+/*function hideModal() {
+  modalbg.removeAttribute("style");
+  modalbg.style.display = "";
+}*/
+
 
 function birthRange() {
   var dd = today.getDate();
@@ -60,17 +66,6 @@ function birthRange() {
 }
 
 birthRange();
-//submit conditions check before submit
-function validate() {
-  document.querySelector()
-  return true;
-}
-
-//hide modal form on .close .btn press (!(launchModal))
-/*function hideModal() {
-  modalbg.removeAttribute("style");
-  modalbg.style.display = "";
-}*/
 
 firstInput.addEventListener("focusout", function (e) {
   var re = /^[A-Za-z]{2,20}$/
@@ -156,3 +151,9 @@ checkboxInput.addEventListener('change', function (e) {
   document.getElementById("checkboxHint").innerText = "";
   return true;
 });
+
+function validate() {
+  document.querySelector(".modal-body").innerHTML = 'Form submission successful.<br><br><input class="btn-submit" type="submit" class="button close" value="Close"/>';
+  return true;
+}
+
