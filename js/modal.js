@@ -152,6 +152,7 @@ checkboxInput.addEventListener('change', function (e) {
 });
 
 function validate() {
-  document.querySelector(".modal-body").innerHTML = 'Form submission successful.<br><br><input class="closer-btn" type="submit" value="Close"/>';
+  document.querySelector(".modal-body").innerHTML = 'Form submission successful.<br><br><input type="submit" class="btn-submit" value="Close">';
+  document.querySelector(".content .btn-submit").addEventListener("click", toggleModal);
   return true;
 }
