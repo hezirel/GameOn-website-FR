@@ -34,7 +34,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", toggleModal));
 closeModal.forEach((btn) => btn.addEventListener("click", toggleModal));
 // launch modal form
 function toggleModal() {
-  // Explain conditon bolean
+  // Explain conditon ternary
   modalbg.style.display = modalbg.style.display === 'block' ? '' : 'block';
 }
 //hide modal form on .close .btn press (!(launchModal))
@@ -60,9 +60,9 @@ function toggleModal() {
   }
 
   today = yyyy + '-' + mm + '-' + dd;
-  document.getElementById("birthdate").setAttribute("max", today);
   toMax = yyy + '-' + mm + '-' + dd;
-  document.getElementById("birthdate").setAttribute("min", (toMax));
+  document.getElementById("birthdate").setAttribute("max", today);
+  document.getElementById("birthdate").setAttribute("min", toMax);
 }());
 
 
@@ -152,6 +152,6 @@ checkboxInput.addEventListener('change', function (e) {
 });
 
 function validate() {
-  document.querySelector(".modal-body").innerHTML = 'Form submission successful.<br><br><input class="btn-submit" type="submit" class="button close" value="Close"/>';
+  document.querySelector(".modal-body").innerHTML = 'Form submission successful.<br><br><input class="closer-btn" type="submit" value="Close"/>';
   return true;
 }
