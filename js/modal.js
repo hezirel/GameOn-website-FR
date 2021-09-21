@@ -115,8 +115,12 @@ birthInput.addEventListener('focusout', function (e) {
   return false;
 });
 
-quantityInput.addEventListener("focusout", function (e) {
-  const re = /\b([0-9]|[1-9][0-9])\b/;
+quantityInput.addEventListener('focusout', function (e) {
+  const re = /^[1-9]?\d$/;
+  //const re = /^\b([0-9]|[1-9][0-9])\b/;
+  //Previous regex expand on changing choices during note review
+  //Regex remove leading 0
+  e.target.value = e.target.value.replace(/^0+(?=\d)/,'');
   if (!(e.target.value.match(re))) {
     document.getElementById("quantityHint").style.display = "inline"
     e.target.parentElement.setAttribute('data-error-visible', 'true');
