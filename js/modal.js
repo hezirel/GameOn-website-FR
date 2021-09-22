@@ -17,8 +17,8 @@ const firstInput = document.getElementById("first")
 const lastInput = document.getElementById("last")
 const emailInput = document.getElementById("email")
 const birthInput = document.getElementById("birthdate")
-let minAge = 18
-let maxAge = 120
+const minAge = 18
+const maxAge = 120
 var today = new Date();
 const quantityInput = document.getElementById("quantity")
 //const radioInput = document.getElementsByName('location')
@@ -37,6 +37,7 @@ function toggleModal() {
   // Explain conditon ternary
   modalbg.style.display = modalbg.style.display === 'block' ? '' : 'block';
 }
+
 //hide modal form on .close .btn press (!(launchModal))
 /*function hideModal() {
   modalbg.removeAttribute("style");
@@ -45,11 +46,11 @@ function toggleModal() {
 
 //Explain self executing function syntax
 (function birthRange() {
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1; //January is 0!
-  var yyyy = today.getFullYear() - minAge;
-  var yyy = yyyy - maxAge;
-  var toMax;
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; //January is 0!
+  let yyyy = today.getFullYear() - minAge;
+  let yyy = yyyy - maxAge;
+  let toMax;
 
   if (dd < 10) {
     dd = '0' + dd;
